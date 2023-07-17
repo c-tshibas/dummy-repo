@@ -1,15 +1,14 @@
 on: [push]
 
-name: Run Synthetics tests using the test public IDs
+name: Run Synthetic tests using an existing synthetics.json file
 jobs:
   e2e_testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run Datadog Synthetics tests
-        uses: DataDog/synthetics-ci-github-action@v0.3.0
+        uses: actions/checkout@v3
+      - name: Run Datadog Synthetic tests
+        uses: DataDog/synthetics-ci-github-action@v0.15.0
         with:
           api_key: ${{secrets.DD_API_KEY}}
           app_key: ${{secrets.DD_APP_KEY}}
-          public_ids: 'zqd-myy-ywa' 
